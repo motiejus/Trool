@@ -33,6 +33,11 @@ class PotInputParser
         :project_id_version => "Project-Id-Version: (.*)\\\\n",
         :report_msgid_bugs_to => "Report-Msgid-Bugs-To: (.*)\\\\n",
         :pot_creation_date => "POT-Creation-Date: (.*)\\\\n",
+        :last_translator => "Last-Translator: (.*)\\\\n",
+        :language_team => "Language-Team: (.*)\\\\n",
+        :mime_version => "MIME-Version: (.*)\\\\n",
+        :content_type => "Content-Type: (.*)\\\\n",
+        :content_transfer_encoding => "Content-Transfer-Encoding: (.*)\\\\n",
     }
     fetchable.each { |k,re| 
         val = @pot.match(re)[1]

@@ -5,7 +5,7 @@ require 'ruby-debug'
 require 'date'
 Debugger.start
 
-class PotTest < ActiveSupport::TestCase
+class PotParserTest < ActiveSupport::TestCase
   # Replace this with your real tests.
   def setup
     @content = File.open('git.pot', 'r').read
@@ -40,4 +40,25 @@ class PotTest < ActiveSupport::TestCase
     assert_equal DateTime.parse("2011-04-25 09:37+0100"),
       @ret[:pot_creation_date]
   end
+
+  test "get last translator" do
+    assert_equal "Couch Dwellers <couch@toostis.com>", @ret[:last_translator]
+  end
+
+  test "get language team" do
+    assert_equal "Lithuanian <couch@toostis.com>", @ret[:language_team]
+  end
+
+  test "get mime version" do
+    assert_equal "1.0", @ret[:mime_version]
+  end
+
+  test "get content type" do
+    assert_equal "text/plain; charset=UTF-8", @ret[:content_type]
+  end
+
+  test "get content transfer encoding" do
+    assert_equal "8bit", @ret[:content_transfer_encoding]
+  end
+
 end
