@@ -15,11 +15,22 @@
   <%= @po.translator %>
 </p>
 
-<p>
-  <b>Pot:</b>
-  <%= @po.pot %>
-</p>
-
+<table id="messages">
+    <% @po.messages.each do |msg| %>
+    <tr>
+      <td class="msgid"> <%= msg.msgid %> </td>
+      <td class="msgstr"
+          onclick="$('#msgstr-text-<%= msg.id %>').show();
+                   $('#msgstr-<%= msg.id %>').hide()">
+        <span id="msgstr-<%= msg.id %>">
+          <%= (not msg.msgstr.empty?) ? msg.msgstr : (raw "&nbsp;") %>
+        </span>
+        <input id="msgstr-text-<%= msg.id %>" type="text"
+               style="display: none;" value="<%= msg.msgstr %>"/>
+      </td>
+    </tr>
+    <% end %>
+</table>
 
 <%= link_to 'Edit', edit_po_path(@po) %> |
 <%= link_to 'Back', pos_path %>

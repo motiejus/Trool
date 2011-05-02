@@ -31,3 +31,4 @@ gem 'sqlite3'
 # end
 gem 'jquery-rails'
 gem 'ruby-debug'
+gem 'auto_migrations'

@@ -29,6 +29,8 @@ GEM
       activesupport (= 3.0.7)
     activesupport (3.0.7)
     arel (2.0.9)
+    auto_migrations (1.1.0)
+      rails (>= 3.0.1)
     builder (2.1.2)
     columnize (0.3.2)
     erubis (2.6.6)
@@ -79,6 +81,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  auto_migrations
   jquery-rails
   rails (= 3.0.7)
   ruby-debug
