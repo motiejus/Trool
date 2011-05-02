@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20110502185644) do
     t.integer  "pot_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "lang"
   end
 
   create_table "pots", :force => true do |t|
