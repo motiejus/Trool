@@ -10,10 +10,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110502183309) do
+ActiveRecord::Schema.define(:version => 20110502185135) do
 
   create_table "pos", :force => true do |t|
-    t.string   "lang"
     t.string   "project"
     t.string   "translator"
     t.integer  "pot_id"
