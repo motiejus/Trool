@@ -18,8 +18,8 @@ class PotTest < ActiveSupport::TestCase
     parser = PotInputParser.new @content
     parser.parse_copyright
     ret = parser.all_dict
-    assert_equal "Couch Dwellers", ret[:author]
-    assert_equal "couch@toostis.com", ret[:email]
-    assert_equal 2011, ret[:year]
+    assert_equal "Couch Dwellers", ret[:first_author]
+    assert_equal "couch@toostis.com", ret[:first_author_email]
+    assert_equal 2011, ret[:first_author_year]
   end
 end

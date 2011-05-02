@@ -12,11 +12,12 @@ class PotInputParser
     # Fourth line of the content
     raise "bad @content" unless @content
     line = @content.split("\n")[3]
-    all, @author, @email, @year = line.match(/# (.*) <(.*)>, (\d+)/).to_a
-    if not (@author and @email and @year):
+    all, @first_author, @first_author_email, @first_author_year =\
+        line.match(/# (.*) <(.*)>, (\d+)/).to_a
+    if not (@first_author and @first_author_email and @first_author_year):
       raise "Wrong Line: %s expected author, email, year." % line
     end
-    @year = Integer(@year)
+    @first_author_year = Integer(@first_author_year)
   end
 
   def parse_headers
@@ -26,6 +27,9 @@ class PotInputParser
   end
 
   def all_dict
-    { :author => @author, :email => @email, :year => @year }
+    { :first_author => @first_author,
+        :first_author_email => @first_author_email,
+        :first_author_year => @first_author_year
+    }
   end
 end
