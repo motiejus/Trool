@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Lang:</b>
+  <%= @po.lang %>
+</p>
+
+<p>
+  <b>Project:</b>
+  <%= @po.project %>
+</p>
+
+<p>
+  <b>Translator:</b>
+  <%= @po.translator %>
+</p>
+
+<p>
+  <b>Pot:</b>
+  <%= @po.pot %>
+</p>
+
+
+<%= link_to 'Edit', edit_po_path(@po) %> |
+<%= link_to 'Back', pos_path %>

@@ -1,0 +1,29 @@
+<h1>Listing pos</h1>
+
+<table>
+  <tr>
+    <th>Lang</th>
+    <th>Project</th>
+    <th>Translator</th>
+    <th>Pot</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pos.each do |po| %>
+  <tr>
+    <td><%= po.lang %></td>
+    <td><%= po.project %></td>
+    <td><%= po.translator %></td>
+    <td><%= po.pot %></td>
+    <td><%= link_to 'Show', po %></td>
+    <td><%= link_to 'Edit', edit_po_path(po) %></td>
+    <td><%= link_to 'Destroy', po, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Po', new_po_path %>

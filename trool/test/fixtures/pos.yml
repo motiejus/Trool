@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  lang: MyString
+  project: MyString
+  translator: MyString
+  pot: 
+
+two:
+  lang: MyString
+  project: MyString
+  translator: MyString
+  pot: 

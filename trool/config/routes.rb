@@ -1,4 +1,6 @@
 Trool::Application.routes.draw do
+  resources :pos
+
   resources :pots
 
   get "welcome/index"
