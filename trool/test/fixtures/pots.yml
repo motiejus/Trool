@@ -3,7 +3,33 @@
 one:
   name: MyString
   lang: MyString
+  title: MyString
+  year: 1
+  first_author: MyString
+  first_author_email: MyString
+  first_author_year: 1
+  project_id_version: MyString
+  report_msgid_bugs_to: MyString
+  pot_creation_date: 2011-05-02
+  last_translator: MyString
+  language_team: MyString
+  language: MyString
+  content_type: MyString
+  content_transfer_encoding: MyString
 
 two:
   name: MyString
   lang: MyString
+  title: MyString
+  year: 1
+  first_author: MyString
+  first_author_email: MyString
+  first_author_year: 1
+  project_id_version: MyString
+  report_msgid_bugs_to: MyString
+  pot_creation_date: 2011-05-02
+  last_translator: MyString
+  language_team: MyString
+  language: MyString
+  content_type: MyString
+  content_transfer_encoding: MyString

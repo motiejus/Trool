@@ -4,6 +4,19 @@
   <tr>
     <th>Name</th>
     <th>Lang</th>
+    <th>Title</th>
+    <th>Year</th>
+    <th>First author</th>
+    <th>First author email</th>
+    <th>First author year</th>
+    <th>Project id version</th>
+    <th>Report msgid bugs to</th>
+    <th>Pot creation date</th>
+    <th>Last translator</th>
+    <th>Language team</th>
+    <th>Language</th>
+    <th>Content type</th>
+    <th>Content transfer encoding</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,6 +26,19 @@
   <tr>
     <td><%= pot.name %></td>
     <td><%= pot.lang %></td>
+    <td><%= pot.title %></td>
+    <td><%= pot.year %></td>
+    <td><%= pot.first_author %></td>
+    <td><%= pot.first_author_email %></td>
+    <td><%= pot.first_author_year %></td>
+    <td><%= pot.project_id_version %></td>
+    <td><%= pot.report_msgid_bugs_to %></td>
+    <td><%= pot.pot_creation_date %></td>
+    <td><%= pot.last_translator %></td>
+    <td><%= pot.language_team %></td>
+    <td><%= pot.language %></td>
+    <td><%= pot.content_type %></td>
+    <td><%= pot.content_transfer_encoding %></td>
     <td><%= link_to 'Show', pot %></td>
     <td><%= link_to 'Edit', edit_pot_path(pot) %></td>
     <td><%= link_to 'Destroy', pot, :confirm => 'Are you sure?', :method => :delete %></td>

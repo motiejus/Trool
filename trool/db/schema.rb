@@ -10,11 +10,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110502155028) do
+ActiveRecord::Schema.define(:version => 20110502182641) do
 
   create_table "pots", :force => true do |t|
     t.string   "name"
     t.string   "lang"
+    t.string   "title"
+    t.integer  "year"
+    t.string   "first_author"
+    t.string   "first_author_email"
+    t.integer  "first_author_year"
+    t.string   "project_id_version"
+    t.string   "report_msgid_bugs_to"
+    t.date     "pot_creation_date"
+    t.string   "last_translator"
+    t.string   "language_team"
+    t.string   "language"
+    t.string   "content_type"
+    t.string   "content_transfer_encoding"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
