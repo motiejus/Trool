@@ -8,8 +8,8 @@ Debugger.start
 class PotParserTest < ActiveSupport::TestCase
   # Replace this with your real tests.
   def setup
-    @content = File.open('git.pot', 'r').read
-    parser = PotInputParser.new @content
+    content = File.open('git.pot', 'r').read
+    parser = PotInputParser.new content
     parser.parse_copyright
     parser.parse_headers
     @ret = parser.all_dict
