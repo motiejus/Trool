@@ -14,6 +14,7 @@ class PosController < ApplicationController
   # GET /pos/1.xml
   def show
     @po = Po.find(params[:id])
+    print @po.messages
 
     respond_to do |format|
       format.html # show.html.erb

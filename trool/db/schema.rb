@@ -10,7 +10,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110502185644) do
+ActiveRecord::Schema.define(:version => 20110502214049) do
+
+  create_table "messages", :force => true do |t|
+    t.string   "msgid"
+    t.string   "msgstr"
+    t.string   "msgid_plural"
+    t.string   "msgctxt"
+    t.integer  "range_from"
+    t.integer  "range_to"
+    t.boolean  "fuzzy"
+    t.integer  "po_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "pos", :force => true do |t|
     t.string   "project"

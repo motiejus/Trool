@@ -40,7 +40,12 @@ class PotsController < ApplicationController
   # POST /pots
   # POST /pots.xml
   def create
-    @pot = Pot.new(params[:pot])
+    # TODO Parse pot file header
+    potdata = params[:pot][:filedata]
+    data = {:title => "Potty project"}
+    
+    # Form a hash for creating a Pot object
+    @pot = Pot.new(data)
 
     respond_to do |format|
       if @pot.save

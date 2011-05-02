@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  msgid: MyString
+  msgstr: MyString
+  msgid_plural: MyString
+  msgctxt: MyString
+  range_from: 1
+  range_to: 1
+  fuzzy: false
+  po: 
+
+two:
+  msgid: MyString
+  msgstr: MyString
+  msgid_plural: MyString
+  msgctxt: MyString
+  range_from: 1
+  range_to: 1
+  fuzzy: false
+  po: 
