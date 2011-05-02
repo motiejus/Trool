@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @pot.name %>
+</p>
+
+<p>
+  <b>Lang:</b>
+  <%= @pot.lang %>
+</p>
+
+
+<%= link_to 'Edit', edit_pot_path(@pot) %> |
+<%= link_to 'Back', pots_path %>

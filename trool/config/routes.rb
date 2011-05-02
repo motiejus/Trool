@@ -1,4 +1,6 @@
 Trool::Application.routes.draw do
+  resources :pots
+
   get "welcome/index"
 
   # The priority is based upon order of creation:
