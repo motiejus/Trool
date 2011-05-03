@@ -15,7 +15,7 @@
     padding-left: 6px;
     line-height: 30px;
 }
-#messages .msgstr input {
+#messages .msgstr input.msgstr_textfield {
     padding: 5px;
     height: 20px;
     font-size: 20px;
