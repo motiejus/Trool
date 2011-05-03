@@ -30,5 +30,5 @@ gem 'sqlite3'
 #   gem 'webrat'
 # end
 gem 'jquery-rails'
-gem 'ruby-debug'
+gem 'ruby-debug19'
 gem 'auto_migrations'
