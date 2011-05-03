@@ -17,9 +17,9 @@ class PosController < ApplicationController
     show = request.GET.fetch('show', nil)
     case show
     when 'translated'
-      @messages = @po.messages.where(:fuzzy => [false, nil])
+      @messages = @po.messages.where("msgstr != ''").where("fuzzy == ?", false)
     when 'untranslated'
-      @messages = @po.messages.where(:fuzzy => [true, nil])
+      @messages = @po.messages.where("msgstr == '' OR fuzzy == ? ", true)
     else
       @messages = @po.messages
     end
