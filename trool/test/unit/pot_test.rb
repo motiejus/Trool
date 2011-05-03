@@ -12,6 +12,7 @@ class PotParserTest < ActiveSupport::TestCase
     parser = PotInputParser.new content
     parser.parse_copyright
     parser.parse_headers
+    parser.parse_messages
     @ret = parser.all_dict
   end
 
@@ -66,7 +67,17 @@ class PotParserTest < ActiveSupport::TestCase
   end
 
   test "message header" do
-    assert_equal "", @ret[:msg].reference
+    assert_equal "wt-status.c:134", @ret[:msg][0].reference
+    assert_equal true, @ret[:msg][1].c_format
+    assert_equal nil, @ret[:msg][1].python_format
+    assert_equal true, @ret[:msg][2].fuzzy
+    assert_equal true, @ret[:msg][2].c_format
+    assert_equal nil, @ret[:msg][2].python_format
+    assert_equal 3, @ret[:msg][2].range_from
+    assert_equal 23, @ret[:msg][2].range_to
   end
 
+  test "message body" do
+    assert_equal "Unmerged paths:", @ret[:msg][0].msgid
+  end
 end

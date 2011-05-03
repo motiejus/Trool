@@ -61,7 +61,10 @@ class PotInputParser
       messages = @pot.split(re)
       messages.reject!{ |item| item.blank? }
       messages = messages[1..-1]
-      parser = MessageParser.new messages[0]
-      @all_dict[:msg] = parser.msg
+      @all_dict[:msg] = []
+      messages.each do |msg|
+        parser = MessageParser.new msg 
+        @all_dict[:msg].push parser.msg
+      end
   end
 end

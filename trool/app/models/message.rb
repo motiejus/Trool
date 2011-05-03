@@ -16,8 +16,32 @@ class MessageParser
     # Initialize a message object
     @msg = Message.new
 
-    # Parse headers and return @lines with headers removed
-    @headers, @lines = parse_headers
+    # Parse headers and return the number of headers parsed
+    headcount = parse_headers
+
+    # Parse messages
+    @lines.shift(headcount)
+    parse_body
+  end
+
+  # Parse messages
+  # There are four kinds of messages: msgid, msgstr, msgctxt, msgid_plural
+  # Each message can span across several lines until either a new message
+  # kind starts, or the end of the block
+  def parse_body
+    mode = ""
+    @lines.each do |line|
+        # Each line is either a continuation of previous message
+        # or starts a new message
+        msgmatch = line.match /^(msg(?:id|str|ctxt|id_plural)) "(.*)"$/
+        linematch = line.match /^"(.*)"$/
+        if msgmatch
+          mode = msgmatch[1]
+          @msg.send mode + "=", msgmatch[2]
+        elsif linematch
+          @msg.send(mode + "=", @msg.send(mode) + linematch[1])
+        end
+    end
   end
 
   # Parse headers of a single message
@@ -30,28 +54,34 @@ class MessageParser
       [/^#\|/, nil, 'header_next'],
       [/^# /, nil, 'header_comment'],
     ]
+
+    # Number of headers
+    numheads = 0
+
     @lines.each do |line|
+      puts line
+
       matched = false
       headertypes.each do |ht|
+        puts "compare " + line + " and " + ht[0].to_s
         if line.match(ht[0])
           puts "matched " + line + " to " + ht[0].to_s
           line = line[2..-1].strip
           params = (not ht[1].nil?) ? line.split(ht[1]) : line
           self.send ht[2], params
           matched = true
+          break
         end
       end
 
       # Stop looping
       break if not matched
 
-      # Cut line
-      @lines.shift
+      # Increase number of headers found
+      numheads += 1
     end
 
-    puts @lines
-
-    return
+    return numheads
   end
 
   def header_comment(comment)
@@ -66,7 +96,7 @@ class MessageParser
     flags.map! {|f| f.strip}
 
     # Handle range flag separately
-    range = flags.select {|v| v =~ /^range:/}
+    range = flags.select {|v| v =~ /^range:/}[0]
     if range
       range_match = range.match /^range:\s(?<from>\w+)..(?<to>\w+)/
       @msg.range_from, @msg.range_to = range_match['from'], range_match['to']
@@ -75,6 +105,7 @@ class MessageParser
 
     # Handle all other flags
     flags.each do |flag|
+      flag.gsub!("-", "_")
       @msg.send flag + "=", true
     end
   end

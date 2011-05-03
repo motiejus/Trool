@@ -19,7 +19,8 @@ msgstr ""
 
 #: wt-status.c:134
 msgid "Unmerged paths:"
-msgstr ""
+msgstr "A"
+"b"
 
 #: wt-status.c:140 wt-status.c:157
 #, c-format
@@ -27,6 +28,7 @@ msgid "  (use \"git reset %s <file>...\" to unstage)"
 msgstr ""
 
 #: wt-status.c:142 wt-status.c:159
+#, c-format, fuzzy, range: 3..23
 msgid "  (use \"git rm --cached <file>...\" to unstage)"
 msgstr ""
 
