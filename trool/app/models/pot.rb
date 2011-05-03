@@ -1,4 +1,5 @@
 require 'date'
+require 'message'
 
 class Pot < ActiveRecord::Base
   has_many :pos
@@ -26,7 +27,7 @@ class PotInputParser
     line1, line2, line3, line4 = @pot.split("\n").collect { |l| l.chomp }[0..3]
     x, first_author, first_author_email, first_author_year =\
         line4.match(/# (.*) <(.*)>, (\d+)/).to_a
-    if not (first_author and first_author_email and first_author_year):
+    if not (first_author and first_author_email and first_author_year)
       raise "Wrong Line: %s expected author, email, year." % line4
     end
     @all_dict[:title] = line1.sub(/^# /, '')
@@ -56,5 +57,11 @@ class PotInputParser
   end
 
   def parse_messages
+      re = /(?:\r\n|\n){2}/
+      messages = @pot.split(re)
+      messages.reject!{ |item| item.blank? }
+      messages = messages[1..-1]
+      parser = MessageParser.new messages[0]
+      @all_dict[:msg] = parser.msg
   end
 end

@@ -65,4 +65,8 @@ class PotParserTest < ActiveSupport::TestCase
     assert_equal "Git common translation.", @ret[:title]
   end
 
+  test "message header" do
+    assert_equal "", @ret[:msg].reference
+  end
+
 end
