@@ -1,0 +1,32 @@
+body { margin: 0; }
+
+* { font-family: arial; }
+
+h1 { font-size: 18px; }
+
+a.plain { text-decoration: none; }
+
+#header {
+    width: 940px;
+    margin: 0 auto;
+    height: 40px;
+    background: #DDD;
+}
+
+#header h1 {
+    font-size: 24px;
+    margin: 0 0 0 10px;
+    line-height: 40px;
+    font-family: arial;
+}
+
+#content {
+    width: 900px;
+    margin: 20px auto 0 auto;
+}
+
+#content h1 {
+    background: #333;
+    padding: 5px;
+    color: white;
+}
