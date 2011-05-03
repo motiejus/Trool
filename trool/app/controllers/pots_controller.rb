@@ -1,3 +1,5 @@
+require ::Rails.root.to_s+'/app/models/pot.rb'
+
 class PotsController < ApplicationController
   # GET /pots
   # GET /pots.xml
@@ -42,7 +44,10 @@ class PotsController < ApplicationController
   def create
     # TODO Parse pot file header
     potdata = params[:pot][:filedata]
-    data = {:title => "Potty project"}
+    parser = PotInputParser.new potdata
+    data = {
+      :filedata => potdata,
+    }.merge parser.parse
     
     # Form a hash for creating a Pot object
     @pot = Pot.new(data)
@@ -61,10 +66,17 @@ class PotsController < ApplicationController
   # PUT /pots/1
   # PUT /pots/1.xml
   def update
+    potdata = params[:pot][:filedata]
+    parser = PotInputParser.new potdata
+    data = {
+      :filedata => potdata,
+    }.merge parser.parse
+    
+    # Form a hash for creating a Pot object
     @pot = Pot.find(params[:id])
 
     respond_to do |format|
-      if @pot.update_attributes(params[:pot])
+      if @pot.update_attributes(data)
         format.html { redirect_to(@pot, :notice => 'Pot was successfully updated.') }
         format.xml  { head :ok }
       else
