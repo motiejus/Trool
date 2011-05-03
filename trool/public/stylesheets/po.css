@@ -1,5 +1,8 @@
+#messages * {
+    font-family: monospace;
+}
 #messages {
-    width: 100%;
+    table-layout: fixed;
     border-collapse: collapse;
 }
   #messages td {
@@ -8,8 +11,14 @@
       border-top: 1px #CCC solid;
       border-bottom: 1px #CCC solid;
   }
-  #messages .msgstr { width: 40%; }
-  #messages .msgid { width: 40%; }
+  #messages .msgstr {
+      width: 360px;
+      max-width: 360px;
+  }
+  #messages .msgid {
+      width: 360px;
+      max-width: 360px;
+  }
   #messages .msgid span {
       color: #AAA;
   }
