@@ -2,28 +2,32 @@
     width: 100%;
     border-collapse: collapse;
 }
-#messages td {
-    padding: 10px;
-    font-size: 20px;
-    border-top: 1px #CCC solid;
-    border-bottom: 1px #CCC solid;
-}
-#messages .msgstr {
-    width: 50%;
-}
-#messages .msgstr span {
-    padding-left: 6px;
-    line-height: 30px;
-}
-#messages .msgstr input.msgstr_textfield {
-    padding: 5px;
-    height: 20px;
-    font-size: 20px;
-    width: 100%;
-    border: none;
-    background: #FFA;
-    display: none;
-}
+  #messages td {
+      padding: 10px;
+      font-size: 20px;
+      border-top: 1px #CCC solid;
+      border-bottom: 1px #CCC solid;
+  }
+  #messages .msgstr {
+      width: 50%;
+  }
+  #messages .msgstr span {
+      padding-left: 6px;
+      line-height: 30px;
+  }
+  #messages .msgstr label {
+    font-size: 13px;
+  }
+  #messages .msgstr input.msgstr_textfield {
+      padding: 5px;
+      height: 20px;
+      font-size: 20px;
+      border: none;
+  }
+    #messages .msgstr input.msgstr_textfield.current {
+      background: #FFA;
+    }
+
 
 div#navigation_statuses, div#navigation_statuses a {
   margin-top: 20px;

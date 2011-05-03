@@ -28,9 +28,6 @@
       <td class="msgstr"
           onclick="$('#msgstr-text-<%= msg.id %>').show().focus();
                    $('#msgstr-<%= msg.id %>').hide()">
-        <span id="msgstr-<%= msg.id %>">
-          <%= (not msg.msgstr.empty?) ? msg.msgstr : (raw "&nbsp;") %>
-        </span>
         <%= form_for :msg, :url => po_message_url(@po, msg),
                      :remote => true, :html => { :method => :put } do |f| %>
              <%= f.text_field :msgstr, :id => "msgstr-text-#{msg.id}",
@@ -40,7 +37,8 @@
                      :remote => true, :html => { :method => :put } do |f| %>
             <%= f.check_box :fuzzy, :id => "fuzzy-bool-#{msg.id}",
                              :value => msg.fuzzy %>
-        <% end %>
+           <%= f.label :fuzzy %>
+         <% end %>
       </td>
     </tr>
     <% end %>
