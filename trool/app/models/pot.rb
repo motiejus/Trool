@@ -23,7 +23,7 @@ class PotInputParser
   def parse_copyright
     # Fourth line of the content
     raise "Empty @pot, please check if you properly constructed" unless @pot
-    line1, line2, line3, line4 = @pot.split("\n").collect { |l|.chomp }[0..3]
+    line1, line2, line3, line4 = @pot.split("\n").collect { |l| l.chomp }[0..3]
     x, first_author, first_author_email, first_author_year =\
         line4.match(/# (.*) <(.*)>, (\d+)/).to_a
     if not (first_author and first_author_email and first_author_year):

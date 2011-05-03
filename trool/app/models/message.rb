@@ -7,3 +7,5 @@ class MessageParser
 
   def initialize(content)
     @lines = content.split("\n").collect { |l| l.chomp }
+  end
+end
