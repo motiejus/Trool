@@ -1,5 +1,7 @@
 Trool::Application.routes.draw do
-  resources :pos
+  resources :pos do
+    resources :messages
+  end
 
   resources :pots
 
