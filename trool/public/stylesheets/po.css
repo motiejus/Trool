@@ -24,3 +24,15 @@
     background: #FFA;
     display: none;
 }
+
+div#navigation_statuses, div#navigation_statuses a {
+  margin-top: 20px;
+  font-size: 1.1em;
+}
+  #navigation_statuses li {
+    display: inline;
+    list-style-type: none;
+    padding-right: 10px;
+    padding-left: 0;
+    margin: 0;
+  }

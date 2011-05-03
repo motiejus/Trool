@@ -19,6 +19,14 @@
   <%= @po.translator %>
 </p>
 
+<div id="navigation_statuses">
+  <ul>
+    <li><a href="?show=all" title="All messages">All</a></li>
+    <li><a href="?show=translated" title="Translated messages">Translated</a></li>
+    <li><a href="?show=untranslated" title="Untranslated messages">Untranslated/Unclear</a></li>
+  </ul>
+</div>
+
 <table id="messages">
     <% @po.messages.each do |msg| %>
     <tr>
