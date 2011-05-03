@@ -59,13 +59,9 @@ class MessageParser
     numheads = 0
 
     @lines.each do |line|
-      puts line
-
       matched = false
       headertypes.each do |ht|
-        puts "compare " + line + " and " + ht[0].to_s
         if line.match(ht[0])
-          puts "matched " + line + " to " + ht[0].to_s
           line = line[2..-1].strip
           params = (not ht[1].nil?) ? line.split(ht[1]) : line
           self.send ht[2], params

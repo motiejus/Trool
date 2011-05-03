@@ -14,10 +14,11 @@ class PotInputParser
     @all_dict = {}
   end
 
+  # Parse pot information
+  # Messages should only be parsed when we create po objects
   def parse
     parse_copyright
     parse_headers
-    parse_messages
     return @all_dict
   end
 
@@ -57,7 +58,7 @@ class PotInputParser
   end
 
   def parse_messages
-      re = /(?:\r\n|\n){2}/
+      re = /(?:\r\n|\n){2,}/
       messages = @pot.split(re)
       messages.reject!{ |item| item.blank? }
       messages = messages[1..-1]

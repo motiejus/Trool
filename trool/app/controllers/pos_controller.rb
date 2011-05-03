@@ -50,7 +50,15 @@ class PosController < ApplicationController
   # POST /pos.xml
   def create
     params[:po][:pot] = Pot.find(params[:po][:pot])
+
+    # Create po file
     @po = Po.new(params[:po])
+
+    # Create empty messages
+    require Rails.root.to_s + '/app/models/pot'
+    potparser = PotInputParser.new @po.pot.filedata
+    potparser.parse_messages
+    msgsaves = potparser.all_dict[:msg].map {|msg| @po.messages.push(msg)}
 
     respond_to do |format|
       if @po.save
