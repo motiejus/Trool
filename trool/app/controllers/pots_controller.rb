@@ -51,7 +51,6 @@ class PotsController < ApplicationController
 
     # Form a hash for creating a Pot object
     @pot = Pot.new(data)
-    redirect_to('/')
 
     respond_to do |format|
       if @pot.save

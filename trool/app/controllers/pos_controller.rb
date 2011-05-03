@@ -74,6 +74,7 @@ class PosController < ApplicationController
   # PUT /pos/1
   # PUT /pos/1.xml
   def update
+    params[:po][:pot] = Pot.find(params[:po][:pot])
     @po = Po.find(params[:id])
 
     respond_to do |format|

@@ -1,11 +1,19 @@
 class Message < ActiveRecord::Base
+  def translated=(trans)
+    self.fuzzy = !trans
+  end
+
+  def translated
+    # if nil, treat as untranslated
+  if self.fuzzy != nil then not self.fuzzy else false end
+  end
+
   belongs_to :po
 end
 
 class MessageParser
   attr_reader :all_dict;
   attr_reader :msg
-
   def initialize(content)
     #require 'ruby-debug'
     #debugger
