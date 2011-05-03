@@ -13,16 +13,23 @@ class PotInputParser
     @all_dict = {}
   end
 
+  def parse
+    parse_copyright
+    parse_headers
+    parse_messages
+    return @all_dict
+  end
+
   def parse_copyright
     # Fourth line of the content
-    raise "bad @pot" unless @pot
-    line = @pot.split("\n")[3]
+    raise "Empty @pot, please check if you properly constructed" unless @pot
+    line1, line2, line3, line4 = @pot.split("\n")[0..3]
     all, first_author, first_author_email, first_author_year =\
-        line.match(/# (.*) <(.*)>, (\d+)/).to_a
+        line4.match(/# (.*) <(.*)>, (\d+)/).to_a
     if not (first_author and first_author_email and first_author_year):
-      raise "Wrong Line: %s expected author, email, year." % line
+      raise "Wrong Line: %s expected author, email, year." % line4
     end
-
+    @all_dict[:title] = line1.sub(/# /, '')
     @all_dict[:first_author] = first_author
     @all_dict[:first_author_email] = first_author_email
     @all_dict[:first_author_year] = Integer(first_author_year)
@@ -35,7 +42,7 @@ class PotInputParser
         :pot_creation_date => "POT-Creation-Date: (.*)\\\\n",
         :last_translator => "Last-Translator: (.*)\\\\n",
         :language_team => "Language-Team: (.*)\\\\n",
-        :mime_version => "MIME-Version: (.*)\\\\n",
+        #:mime_version => "MIME-Version: (.*)\\\\n",
         :content_type => "Content-Type: (.*)\\\\n",
         :content_transfer_encoding => "Content-Transfer-Encoding: (.*)\\\\n",
     }
