@@ -1,4 +1,5 @@
 require 'date'
+require 'message'
 
 class Pot < ActiveRecord::Base
   has_many :pos
@@ -56,5 +57,11 @@ class PotInputParser
   end
 
   def parse_messages
+      re = /(?:\r\n|\n){2}/
+      messages = @pot.split(re)
+      messages.reject!{ |item| item.blank? }
+      messages = messages[1..-1]
+      parser = MessageParser.new messages[0]
+      @all_dict[:msg] = parser.msg
   end
 end

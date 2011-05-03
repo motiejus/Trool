@@ -1,7 +1,5 @@
 $(document).ready(function() {
     $('#messages input').change(function() {
-        $(this).parents('form:first').submit();
-
         // Hide current
         $(this).hide()
         $(this).parents('.msgstr:first').find('span').
@@ -12,6 +10,9 @@ $(document).ready(function() {
                 find('.msgstr span').hide();
         $(this).parents('tr:first').next().
                 find('.msgstr input').show().focus();
+
+        // Submit
+        $(this).parents('form:first').submit();
     }).keypress(function(e) {
         if (e.keyCode == 13 || e.keyCode == 9) {
             $(this).change();

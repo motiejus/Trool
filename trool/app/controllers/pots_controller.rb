@@ -42,25 +42,27 @@ class PotsController < ApplicationController
   # POST /pots
   # POST /pots.xml
   def create
-    # TODO Parse pot file header
+    # Parse pot file header
     potdata = params[:pot][:filedata]
     parser = PotInputParser.new potdata
     data = {
       :filedata => potdata,
     }.merge parser.parse
+
     
     # Form a hash for creating a Pot object
-    @pot = Pot.new(data)
+    #@pot = Pot.new(data)
+    redirect_to('/')
 
-    respond_to do |format|
-      if @pot.save
-        format.html { redirect_to(@pot, :notice => 'Pot was successfully created.') }
-        format.xml  { render :xml => @pot, :status => :created, :location => @pot }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @pot.errors, :status => :unprocessable_entity }
-      end
-    end
+    #respond_to do |format|
+    #  if @pot.save
+    #    format.html { redirect_to(@pot, :notice => 'Pot was successfully created.') }
+    #    format.xml  { render :xml => @pot, :status => :created, :location => @pot }
+    #  else
+    #    format.html { render :action => "new" }
+    #    format.xml  { render :xml => @pot.errors, :status => :unprocessable_entity }
+    #  end
+    #end
   end
 
   # PUT /pots/1
