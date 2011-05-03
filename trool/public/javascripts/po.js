@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $('#messages input').change(function() {
         $(this).parents('form:first').submit();
-
+    }).filter(':text').change(function() {
         // Hide current
         $(this).hide()
         $(this).parents('.msgstr:first').find('span').
