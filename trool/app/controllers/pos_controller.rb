@@ -41,6 +41,7 @@ class PosController < ApplicationController
   # POST /pos
   # POST /pos.xml
   def create
+    params[:po][:pot] = Pot.find(params[:po][:pot])
     @po = Po.new(params[:po])
 
     respond_to do |format|
