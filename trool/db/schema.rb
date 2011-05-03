@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110502214049) do
+ActiveRecord::Schema.define(:version => 20110503021855) do
 
   create_table "messages", :force => true do |t|
     t.string   "msgid"
@@ -23,6 +23,33 @@ ActiveRecord::Schema.define(:version => 20110502214049) do
     t.integer  "po_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "translator_comments"
+    t.string   "extracted_comments"
+    t.string   "reference"
+    t.boolean  "c_format"
+    t.boolean  "objc_format"
+    t.boolean  "sh_format"
+    t.boolean  "python_format"
+    t.boolean  "lisp_format"
+    t.boolean  "elisp_format"
+    t.boolean  "librep_format"
+    t.boolean  "scheme_format"
+    t.boolean  "smalltalk_format"
+    t.boolean  "java_format"
+    t.boolean  "csharp_format"
+    t.boolean  "awk_format"
+    t.boolean  "object_pascal_format"
+    t.boolean  "ycp_format"
+    t.boolean  "tcl_format"
+    t.boolean  "perl_format"
+    t.boolean  "perl_brace_format"
+    t.boolean  "php_format"
+    t.boolean  "gcc_internal_format"
+    t.boolean  "gcf_internal_format"
+    t.boolean  "qt_format"
+    t.boolean  "qt_plural_format"
+    t.boolean  "kde_format"
+    t.boolean  "boost_format"
   end
 
   create_table "pos", :force => true do |t|
