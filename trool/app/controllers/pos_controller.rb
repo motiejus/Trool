@@ -58,7 +58,7 @@ class PosController < ApplicationController
     require Rails.root.to_s + '/app/models/pot'
     potparser = PotInputParser.new @po.pot.filedata
     potparser.parse_messages
-    msgsaves = potparser.all_dict[:msg].map {|msg| @po.messages.push(msg)}
+    potparser.all_dict[:msg].each {|msg| @po.messages.push(msg)}
 
     respond_to do |format|
       if @po.save
