@@ -1,23 +1,19 @@
 $(document).ready(function() {
-    $('#messages input').change(function() {
-        $(this).parents('form:first').submit();
-    }).filter(':text').change(function() {
-        // Hide current
-        $(this).hide()
-        $(this).parents('.msgstr:first').find('span').
-                text($(this).val()).show();
-
-        // Show next
-        $(this).parents('tr:first').next().
-                find('.msgstr span').hide();
-        $(this).parents('tr:first').next().
-                find('.msgstr input').show().focus();
-
-        // Submit
-        $(this).parents('form:first').submit();
-    }).keypress(function(e) {
+    $('#messages input').change(function() { // Submit changes
+        $(this).closest('form').submit();
+    }).filter(':text').keypress(function(e) { // focus next/prev
+        // on tab or enter, focus next entry
         if (e.keyCode == 13 || e.keyCode == 9) {
-            $(this).change();
+            if (e.shiftKey) // previous
+              $(this).closest('tr').prev().
+                      find('input:text').focus();
+            else $(this).closest('tr').next(). // next
+                      find('input:text').focus();
+            return false;
         }
+    }).focusin(function() {
+        $(this).addClass('current');
+    }).focusout(function() {
+        $(this).removeClass('current');
     });
 });
