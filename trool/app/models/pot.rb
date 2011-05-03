@@ -60,9 +60,12 @@ class PotInputParser
   def parse_messages
       re = /(?:\r\n|\n){2,}/
       messages = @pot.split(re)
+      raise "messages empty" unless messages
+
       messages.reject!{ |item| item.blank? }
       messages = messages[1..-1]
       @all_dict[:msg] = []
+      raise "messages empty" unless messages
       messages.each do |msg|
         parser = MessageParser.new msg 
         @all_dict[:msg].push parser.msg

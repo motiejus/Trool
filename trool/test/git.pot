@@ -19,8 +19,7 @@ msgstr ""
 
 #: wt-status.c:134
 msgid "Unmerged paths:"
-msgstr "A"
-"b"
+msgstr ""
 
 #: wt-status.c:140 wt-status.c:157
 #, c-format

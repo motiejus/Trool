@@ -102,8 +102,8 @@ class MessageParser
     # Handle range flag separately
     range = flags.select {|v| v =~ /^range:/}[0]
     if range
-      range_match = range.match /^range:\s(?<from>\w+)..(?<to>\w+)/
-      @msg.range_from, @msg.range_to = range_match['from'], range_match['to']
+      range_match = range.match /^range:\s(\w+)..(\w+)/
+      @msg.range_from, @msg.range_to = range_match[1], range_match[2]
       flags.delete range
     end
 
