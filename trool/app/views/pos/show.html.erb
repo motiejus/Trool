@@ -24,15 +24,15 @@
 <table id="messages">
     <% @messages.each do |msg| %>
     <tr>
-      <td class="msgid"> <%= msg.msgid %> </td>
-      <td class="msgstr"
-          onclick="$('#msgstr-text-<%= msg.id %>').show().focus();
-                   $('#msgstr-<%= msg.id %>').hide()">
+      <td class="msgid"><%= msg.msgid.gsub(/( +)/, '<span>\1</span>').html_safe.gsub(' ', '·') %></td>
+      <td class="msgstr">
         <%= form_for :msg, :url => po_message_url(@po, msg),
                      :remote => true, :html => { :method => :put } do |f| %>
              <%= f.text_field :msgstr, :id => "msgstr-text-#{msg.id}",
                          :class => "msgstr_textfield", :value => msg.msgstr %>
         <% end %>
+        </td>
+        <td class="msgstuff">
         <%= form_for :msg, :url => po_message_url(@po, msg),
                      :remote => true, :html => { :method => :put } do |f| %>
             <%= f.check_box :fuzzy, :id => "fuzzy-bool-#{msg.id}",

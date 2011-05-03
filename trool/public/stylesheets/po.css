@@ -4,25 +4,24 @@
 }
   #messages td {
       padding: 10px;
-      font-size: 20px;
+      font-size: 15px;
       border-top: 1px #CCC solid;
       border-bottom: 1px #CCC solid;
   }
-  #messages .msgstr {
-      width: 50%;
+  #messages .msgstr { width: 40%; }
+  #messages .msgid { width: 40%; }
+  #messages .msgid span {
+      color: #AAA;
   }
-  #messages .msgstr span {
-      padding-left: 6px;
-      line-height: 30px;
-  }
-  #messages .msgstr label {
-    font-size: 13px;
+  #messages .msgstuff label {
+    font-size: 10px;
   }
   #messages .msgstr input.msgstr_textfield {
       padding: 5px;
-      height: 20px;
-      font-size: 20px;
+      height: 15x;
+      font-size: 15px;
       border: none;
+      width: 100%;
   }
     #messages .msgstr input.msgstr_textfield.current {
       background: #FFA;
