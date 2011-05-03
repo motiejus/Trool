@@ -10,10 +10,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110503021855) do
+ActiveRecord::Schema.define(:version => 20110503122534) do
 
   create_table "messages", :force => true do |t|
-    t.string   "msgid"
+    t.string   "msgid",                :default => "", :null => false
     t.string   "msgstr"
     t.string   "msgid_plural"
     t.string   "msgctxt"
