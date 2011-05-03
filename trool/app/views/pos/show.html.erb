@@ -25,7 +25,8 @@
         <span id="msgstr-<%= msg.id %>">
           <%= (not msg.msgstr.empty?) ? msg.msgstr : (raw "&nbsp;") %>
         </span>
-        <%= form_for :msg, :url => po_message_url(@po, msg), :remote => true, :html => { :method => :put },
+        <%= form_for :msg, :url => po_message_url(@po, msg),
+                     :remote => true, :html => { :method => :put },
                       do |f| %>
             <%= f.text_field :msgstr, :id => "msgstr-text-#{msg.id}",
                              :value => msg.msgstr %>
