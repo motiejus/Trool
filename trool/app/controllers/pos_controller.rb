@@ -14,7 +14,15 @@ class PosController < ApplicationController
   # GET /pos/1.xml
   def show
     @po = Po.find(params[:id])
-    print @po.messages
+    show = request.GET.fetch('show', nil)
+    case show
+    when 'translated'
+      @messages = @po.messages.where(:fuzzy => [false, nil])
+    when 'untranslated'
+      @messages = @po.messages.where(:fuzzy => [true, nil])
+    else
+      @messages = @po.messages
+    end
 
     respond_to do |format|
       format.html # show.html.erb
