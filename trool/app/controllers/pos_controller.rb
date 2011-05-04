@@ -99,4 +99,10 @@ class PosController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  # GET /pos/1/download
+  def download
+    @po = Po.find(params[:id])
+    render :text => @po.output, :content_type => 'text/plain'
+  end
 end

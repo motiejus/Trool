@@ -4,17 +4,12 @@ require 'date'
 class Po < ActiveRecord::Base
   belongs_to :pot
   has_many :messages
-end
 
-class PoGenerator
-  def initialize po
-    @po = po
-    @pot = po.pot
-  end
+  def output
+    @po = self
+    @pot = self.pot
 
-  def generate_string
     ## TODO: fields below
-
     # TODO: last edit of message?
     po_revision_date = DateTime.now.strftime("%F %T %z")
     pot_creation_date = @pot.pot_creation_date.strftime("%F %T %z")
