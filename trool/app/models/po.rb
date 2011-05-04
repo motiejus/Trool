@@ -1,5 +1,6 @@
 require 'ruby-debug'
 require 'date'
+require Rails.root.to_s + '/app/models/pot'
 
 class Po < ActiveRecord::Base
   belongs_to :pot
@@ -34,5 +35,22 @@ msgstr ""
 "Content-Type: #{@pot.content_type}"
 "Content-Transfer-Encoding: #{@pot.content_transfer_encoding}"
     }
+
+  # Create empty messages
+  def populate_messages
+    potparser = PotInputParser.new self.pot.filedata
+    potparser.parse_messages
+    potparser.all_dict[:msg].each {|msg| self.messages.push(msg)}
+  end
+
+  # Output a substring of po file containing messages
+  def messages_string
+    strings = []
+    self.messages.each do |msg|
+      strings.push self.header_string(msg)
+      strings.push self.body_string(msg) 
+      strings.push "\n"
+    end
+    return strings.join "\n"
   end
 end

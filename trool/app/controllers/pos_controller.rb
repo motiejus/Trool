@@ -53,12 +53,7 @@ class PosController < ApplicationController
 
     # Create po file
     @po = Po.new(params[:po])
-
-    # Create empty messages
-    require Rails.root.to_s + '/app/models/pot'
-    potparser = PotInputParser.new @po.pot.filedata
-    potparser.parse_messages
-    potparser.all_dict[:msg].each {|msg| @po.messages.push(msg)}
+    @po.populate_messages
 
     respond_to do |format|
       if @po.save

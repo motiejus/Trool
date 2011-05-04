@@ -6,7 +6,6 @@ require 'date'
 Debugger.start
 
 class PotParserTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
   def setup
     content = File.open(Rails.root.to_s+'/test/git.pot', 'r').read
     parser = PotInputParser.new content
