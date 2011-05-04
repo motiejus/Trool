@@ -1,5 +1,6 @@
 <h1>New po</h1>
 
 <%= render 'form' %>
+<%= collection_select :pots, :id, Pot.all, :id, :title  %>
 
 <%= link_to 'Back', pos_path %>

@@ -12,6 +12,8 @@
     <% pot.pos.each do |po| %>
         <td> <%= link_to po.lang, po %> </td>
     <% end %>
+    <td> | </td>
+    <td><%= link_to "Translate to your language!", new_po_path %></td>
   </tr>
 <% end %>
 </table>
