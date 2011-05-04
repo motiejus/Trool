@@ -45,11 +45,11 @@ class PotsController < ApplicationController
     # Parse pot file header
     potdata = params[:pot][:filedata]
     parser = PotInputParser.new potdata
-    data = {
-      :filedata => potdata,
-    }.merge parser.parse
 
     # Form a hash for creating a Pot object
+    data = {
+      :filedata => potdata,
+    }.merge parser.parse_meta
     @pot = Pot.new(data)
 
     respond_to do |format|
@@ -67,16 +67,10 @@ class PotsController < ApplicationController
   # PUT /pots/1.xml
   def update
     potdata = params[:pot][:filedata]
-    parser = PotInputParser.new potdata
-    data = {
-      :filedata => potdata,
-    }.merge parser.parse
-    
-    # Form a hash for creating a Pot object
     @pot = Pot.find(params[:id])
 
     respond_to do |format|
-      if @pot.update_attributes(data)
+      if @pot.update_data potdata
         format.html { redirect_to(@pot, :notice => 'Pot was successfully updated.') }
         format.xml  { head :ok }
       else
