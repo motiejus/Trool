@@ -38,9 +38,8 @@ table#messages {
     }
 
 
-div#navigation_statuses, div#navigation_statuses a {
-  margin-top: 20px;
-  font-size: 1.1em;
+#navigation_statuses {
+  margin-bottom: 10px; 
 }
   #navigation_statuses li {
     display: inline;

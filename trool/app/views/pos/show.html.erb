@@ -7,11 +7,15 @@
 <h1> <%= @po.pot.title %> &#8594; <%= @po.lang %> </h1>
 
 <div id="navigation_statuses">
-  <ul>
-    <li><a href="?" title="All messages">All</a></li>
-    <li><a href="?show=translated" title="Translated messages">Translated</a></li>
-    <li><a href="?show=untranslated" title="Untranslated messages">Untranslated/Unclear</a></li>
-  </ul>
+  <div class="fleft">
+    <ul>
+      <li><a href="?" title="All messages">All</a></li>
+      <li><a href="?show=translated" title="Translated messages">Translated</a></li>
+      <li><a href="?show=untranslated" title="Untranslated messages">Untranslated/Unclear</a></li>
+    </ul>
+  </div>
+  <div class="fright"><a href="">Download POT</a></div>
+  <div class="cl"></div>
 </div>
 
 <table id="messages">
