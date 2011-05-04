@@ -16,6 +16,10 @@ class PotParserTest < ActiveSupport::TestCase
     @ret = parser.all_dict
   end
 
+  test "get package (name)" do
+    assert_equal "git", @ret[:name]
+  end
+
   test "get author" do
     assert_equal "Couch Dwellers", @ret[:first_author]
   end

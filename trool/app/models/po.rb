@@ -22,7 +22,7 @@ class PoGenerator
     ret = %{
 # #{@pot.title}
 # Copyright (C) #{@pot.first_author_year} #{@pot.first_author}
-# This file is distributed under the same license as the #{@pot.title} package.
+# This file is distributed under the same license as the #{@pot.name} package.
 # #{@pot.first_author} <#{@pot.first_author_email}>, #{@pot.first_author_year}.
 #
 #, fuzzy

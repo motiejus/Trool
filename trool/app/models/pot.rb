@@ -28,10 +28,12 @@ class PotInputParser
     line1, line2, line3, line4 = @pot.split("\n").collect { |l| l.chomp }[0..3]
     x, first_author, first_author_email, first_author_year =\
         line4.match(/# (.*) <(.*)>, (\d+)/).to_a
+    name = line3.match(/distributed under the same license as the (.*) package./)[1]
     if not (first_author and first_author_email and first_author_year)
       raise "Wrong Line: %s expected author, email, year." % line4
     end
     @all_dict[:title] = line1.sub(/^# /, '')
+    @all_dict[:name] = name
     @all_dict[:first_author] = first_author
     @all_dict[:first_author_email] = first_author_email
     @all_dict[:first_author_year] = Integer(first_author_year)
