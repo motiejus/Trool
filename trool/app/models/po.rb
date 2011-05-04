@@ -15,8 +15,7 @@ class Po < ActiveRecord::Base
     po_revision_date = DateTime.now.strftime("%F %T %z")
     pot_creation_date = @pot.pot_creation_date.strftime("%F %T %z")
 
-    ret = %{
-# #{@pot.title}
+    ret = %{# #{@pot.title}
 # Copyright (C) #{@pot.first_author_year} #{@pot.first_author}
 # This file is distributed under the same license as the #{@pot.name} package.
 # #{@pot.first_author} <#{@pot.first_author_email}>, #{@pot.first_author_year}.
@@ -34,7 +33,9 @@ msgstr ""
 "MIME-Version: 1.0"
 "Content-Type: #{@pot.content_type}"
 "Content-Transfer-Encoding: #{@pot.content_transfer_encoding}"
-    }
+
+} + messages_string
+  end
 
   # Create empty messages
   def populate_messages
@@ -47,10 +48,8 @@ msgstr ""
   def messages_string
     strings = []
     self.messages.each do |msg|
-      strings.push self.header_string(msg)
-      strings.push self.body_string(msg) 
-      strings.push "\n"
+      strings.push msg.to_string
     end
-    return strings.join "\n"
+    return strings.join "\n\n"
   end
 end
