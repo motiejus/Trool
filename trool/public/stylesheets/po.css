@@ -18,10 +18,11 @@ table#messages {
   #messages .msgid {
       width: 360px;
       max-width: 360px;
-      word-wrap: break-word;
+      /*word-wrap: break-word;*/
+      white-space: pre-wrap;
   }
-  #messages .msgid span {
-      color: #AAA;
+  #messages .msgid span.spaced {
+      background-color: #EEE;
   }
   #messages .msgstuff label {
     font-size: 10px;

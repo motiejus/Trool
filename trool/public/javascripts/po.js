@@ -13,8 +13,10 @@ $(document).ready(function() {
         }
     }).focusin(function() {
         $(this).addClass('current');
+        $(this).closest("tr").find("td.msgid span").addClass("spaced");
     }).focusout(function() {
         $(this).removeClass('current');
+        $(this).closest("tr").find("td.msgid span").removeClass("spaced");
     }).hover(
         function() { $(this).addClass('focused'); },
         function() { $(this).removeClass('focused'); }
