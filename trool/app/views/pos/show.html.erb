@@ -28,8 +28,7 @@
         <td class="msgstuff">
         <%= form_for :msg, :url => po_message_url(@po, msg),
                      :remote => true, :html => { :method => :put } do |f| %>
-            <%= f.check_box :fuzzy, :id => "fuzzy-bool-#{msg.id}",
-                             :value => msg.fuzzy %>
+                       <%= f.check_box :fuzzy, :name => "fuzzy-#{msg.id}", :checked => msg.fuzzy %>
            <%= f.label :fuzzy %>
          <% end %>
       </td>

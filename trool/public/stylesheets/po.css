@@ -1,9 +1,10 @@
 #messages * {
     font-family: monospace;
 }
-#messages {
+table#messages {
     table-layout: fixed;
     border-collapse: collapse;
+    width: 100%;
 }
   #messages td {
       padding: 10px;
