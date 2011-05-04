@@ -32,7 +32,10 @@ table#messages {
       width: 100%;
   }
     #messages .msgstr input.msgstr_textfield.current {
-      background: #FFA;
+      background: #FFA !important;
+    }
+    #messages .msgstr input.msgstr_textfield.focused {
+      background: #F4F4F4;
     }
 
 
