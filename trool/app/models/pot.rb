@@ -16,7 +16,7 @@ class Pot < ActiveRecord::Base
 
     # Update all related po files
     self.pos.each do |po|
-      oldmsgs = po.messages.clone
+      oldmsgs = po.messages
       uplmsgs = parser.parse_messages
 
       # Create messages that are in uplmsgs but not in oldmsgs
@@ -24,17 +24,17 @@ class Pot < ActiveRecord::Base
       uplmsgs.each do |msg|
         if not oldids.include? msg.msgid
           # New message - create db entry
-          po.messages.push uplmsgs
+          po.messages.push msg
         end
       end
 
       # Messages to be marked for deletion in next round
       uplids = uplmsgs.map {|msg| msg.msgid}
       oldmsgs.each do |msg|
-        if not uplmsgs.include? msg.msgid
+        if not uplids.include? msg.msgid
           # Message not in uploaded file - mark for removal
           # TODO mark as deprecated
-          po.messages.delete msg
+          msg.destroy
         end
       end
 

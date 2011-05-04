@@ -1,4 +1,5 @@
 class Message < ActiveRecord::Base
+  belongs_to :po
 
   FLAGS = [:fuzzy, :range, :c_format, :objc_format, :sh_format,
            :python_format, :lisp_format, :elisp_format, :librep_format,
@@ -66,8 +67,6 @@ class Message < ActiveRecord::Base
     end
     return nil
   end
-
-  belongs_to :po
 end
 
 class MessageParser
