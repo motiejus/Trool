@@ -49,7 +49,7 @@ class PosController < ApplicationController
   # POST /pos
   # POST /pos.xml
   def create
-    params[:po][:pot] = Pot.find(params[:po][:pot])
+    params[:po][:pot] = Pot.find(params[:pot][:id])
 
     # Create po file
     @po = Po.new(params[:po])
@@ -69,7 +69,7 @@ class PosController < ApplicationController
   # PUT /pos/1
   # PUT /pos/1.xml
   def update
-    params[:po][:pot] = Pot.find(params[:po][:pot])
+    #params[:po][:pot] = Pot.find(params[:po][:pot])
     @po = Po.find(params[:id])
 
     respond_to do |format|

@@ -1,6 +1,12 @@
 <h1>New po</h1>
 
-<%= render 'form' %>
-<%= collection_select :pots, :id, Pot.all, :id, :title  %>
+<!-- FIXME URL STATIC!!! -->
+<%= form_for :po, :remote => true, :url => "/pos" do |f| %>
+<table style="margin-top: 20px"><tr>
+    <td><%= f.label :lang %></td><td><%= f.text_field :lang %></td></tr>
+    <td><%= f.label :translator %></td><td><%= f.text_field :translator %></td></tr>
+    <td>Project:</td><td><%= collection_select :pot, :id, Pot.all, :id, :title  %></td></tr>
+    <td colspan="2"><input type="submit" value="Create new translation!" /></td></tr>
+<% end %>
 
 <%= link_to 'Back', pos_path %>
