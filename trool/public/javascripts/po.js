@@ -15,9 +15,7 @@ $(document).ready(function() {
         $(this).addClass('current');
     }).focusout(function() {
         $(this).removeClass('current');
-    }).mouseenter(function() {
-        $(this).addClass('focused');
-    }).mouseout(function() {
-        $(this).removeClass('focused');
-    })
+    }).hover(function() { $(this).addClass('focused'); },
+             function() { $(this).removeClass('focused'); }
+    );
 });
