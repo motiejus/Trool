@@ -53,7 +53,11 @@ class PosController < ApplicationController
 
     # Create po file
     @po = Po.new(params[:po])
-    @po.populate_messages
+    if params[:data]
+      @po.populate_from_po(params[:data])
+    else
+      @po.populate_from_pot
+    end
 
     respond_to do |format|
       if @po.save

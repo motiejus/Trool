@@ -54,6 +54,8 @@ class Pot < ActiveRecord::Base
 end
 
 # Returns hash from which Pot can be populated
+# In fact this is a PO, not POT file parser
+# POT files are PO files with empty msgstr
 class PotInputParser
   attr_reader :all_dict;
 

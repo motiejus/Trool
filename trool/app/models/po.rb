@@ -37,8 +37,28 @@ msgstr ""
 } + messages_string
   end
 
+  # Create messages from PO data file
+  def populate_from_po(filedata)
+    # Parse the uploaded PO file with msgstrs
+    poparser = PotInputParser.new filedata
+    poparser.parse_messages
+
+    # Parse the POT template
+    potparser = PotInputParser.new self.pot.filedata
+    potparser.parse_messages
+
+    # PO and POT files must have the same msgids
+    poids = poparser.all_dict[:msg].map {|msg| msg.msgid}
+    potids = potparser.all_dict[:msg].map {|msg| msg.msgid}
+    unless poids.sort! == potids.sort!
+      raise "Messages in PO file are different from messages in POT file!"
+    end
+
+    poparser.all_dict[:msg].each {|msg| self.messages.push(msg)}
+  end
+
   # Create empty messages
-  def populate_messages
+  def populate_from_pot
     potparser = PotInputParser.new self.pot.filedata
     potparser.parse_messages
     potparser.all_dict[:msg].each {|msg| self.messages.push(msg)}
