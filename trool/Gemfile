@@ -36,4 +36,4 @@ end
 # end
 gem 'jquery-rails'
 gem 'auto_migrations'
-gem 'ruby-json'
+gem 'json'
