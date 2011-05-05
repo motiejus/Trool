@@ -10,8 +10,8 @@
   <div class="fleft">
     <ul>
       <li><a href="?" title="All messages">All</a></li>
-      <li><a href="?show=translated" title="Translated messages">Translated</a></li>
       <li><a href="?show=untranslated" title="Untranslated messages">Untranslated/Unclear</a></li>
+      <li><a href="?show=translated" title="Translated messages">Translated</a></li>
     </ul>
   </div>
   <div class="fright"><a href="<%= download_po_url(:id => @po.id) %>">Download PO</a></div>
@@ -24,13 +24,15 @@
     <tr>
       <td class="msgid"><%= msg.msgid.gsub(/( +)/, '<span>\1</span>').html_safe %></td>
       <td class="msgstr">
-        <%= form_for :msg, :url => po_message_url(@po, msg),
-                     :remote => true, :html => { :method => :put } do |f| %>
+        <%= form_for :msg, :url => po_message_url(@po, msg), :remote => true,
+            :html => { :method => :put, :class => 'msgstr-form',
+                       :autocomplete => :off } do |f| %>
              <%= f.text_area :msgstr, :id => "msgstr-text-#{msg.id}",
                              :class => "msgstr_text",
                              :value => msg.msgstr, :rows => msg.msgid.count("\n") + 1 %>
         <% end %>
         </td>
+        <td class="msgstatus"></td>
         <td class="msgstuff">
         <%= form_for :msg, :url => po_message_url(@po, msg),
                      :remote => true, :html => { :method => :put } do |f| %>

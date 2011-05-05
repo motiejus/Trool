@@ -1,5 +1,9 @@
 require 'ruby-debug'
+require 'json'
+
 class MessagesController < ApplicationController
+  respond_to :html, :json
+
   def update
     @msg = Message.find params[:id]
 
@@ -13,6 +17,13 @@ class MessagesController < ApplicationController
     # Handle all other message parameters
     @msg.update_attributes params[:msg]
 
-    render :nothing => true
+    # Check for errors
+    if @msg.valid?
+      render :json => "Saved.".to_json,
+    else
+      # Return error message
+      render :json => @msg.errors.to_json,
+          :status => :unprocessable_entity
+    end
   end
 end

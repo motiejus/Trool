@@ -21,4 +21,19 @@ $(document).ready(function() {
         function() { $(this).addClass('focused'); },
         function() { $(this).removeClass('focused'); }
     );
+
+    $('.msgstr-form').bind('ajax:error', function(evt, xhr, status, error) {
+        stat = $(this).parent().nextAll('.msgstatus');
+        try {
+            errors = $.parseJSON(xhr.responseText);
+            stat.addClass('error');
+            stat[0].title = errors['msgstr'][0];
+        } catch(err) {
+            errors = {'message': 'Server error'}
+        }
+    }).bind('ajax:success', function(evt, data, status, xhr) {
+        stat = $(this).parent().nextAll('.msgstatus');
+        stat.addClass('ok').fadeTo(600, 0);
+        stat[0].title = $.parseJSON(xhr.responseText);
+    });
 });

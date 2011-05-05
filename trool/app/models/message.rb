@@ -1,5 +1,8 @@
 class Message < ActiveRecord::Base
   belongs_to :po
+  validates_each :msgstr, :msgctxt, :msgid_plural do |model, attr, value|
+    model.errors.add(attr, 'Quotes should be escaped.') if value =~ /[^\\]\"|^\"/
+  end
 
   FLAGS = [:fuzzy, :range, :c_format, :objc_format, :sh_format,
            :python_format, :lisp_format, :elisp_format, :librep_format,
@@ -30,7 +33,8 @@ class Message < ActiveRecord::Base
     [:msgid, :msgstr, :msgid_plural, :msgctxt].each do |mode|
       msg = send mode
       if msg
-        msgs = msg.split "\n"
+        msg.gsub("\"", "\\\"") if mode != :msgid
+        msgs = msg.split("\n")
         strings.push "#{mode} \"#{msgs.shift}\""
         msgs.each { |m| strings.push "\"#{m}\"" }
       end

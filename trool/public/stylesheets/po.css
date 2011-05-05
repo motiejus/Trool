@@ -30,11 +30,23 @@ table#messages {
   #messages .msgstuff label {
     font-size: 10px;
   }
-  #messages .msgstr .msgstr_text {
+  #messages .msgstatus {
+    width: 7px;
+  }
+  #messages .msgstatus.error {
+    background: #D55;
+  }
+  #messages .msgstatus.ok {
+    background: #5D5;
+  }
+  #messages .msgstr textarea.msgstr_text {
       font-size: 13px;
       padding: 4px;
       border: none;
-      width: 100%;
+      width: 392px;
+      max-width: 392px;
+      min-width: 392px;
+      min-height: 20px;
   }
   #messages .msgstr .msgstr_text.current {
     background: #FFA !important;
