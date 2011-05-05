@@ -31,7 +31,7 @@ class Message < ActiveRecord::Base
       msg = send mode
       if msg
         msgs = msg.split "\n"
-        strings.push "#{mode}: \"#{msgs.shift}\""
+        strings.push "#{mode} \"#{msgs.shift}\""
         msgs.each { |m| strings.push "\"#{m}\"" }
       end
     end
