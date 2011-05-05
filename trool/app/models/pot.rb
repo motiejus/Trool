@@ -2,7 +2,7 @@ require 'date'
 require 'message'
 
 class Pot < ActiveRecord::Base
-  has_many :pos
+  has_many :pos, :dependent => :destroy
 
   # User uploads a new pot file
   # TODO marking as deprecated
