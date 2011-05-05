@@ -1,14 +1,14 @@
 $(document).ready(function() {
-    $('#messages input').change(function() { // Submit changes
+    $('input, textarea', '#messages').change(function() { // Submit changes
         $(this).closest('form').submit();
-    }).filter(':text').keypress(function(e) { // focus next/prev
+    }).filter('textarea').keypress(function(e) { // focus next/prev
         // on tab or enter, focus next entry
-        if (e.keyCode == 13 || e.keyCode == 9) {
+        if ((e.ctrlKey && e.keyCode == 13) || e.keyCode == 9) {
             if (e.shiftKey) // previous
               $(this).closest('tr').prev().
-                      find('input:text').focus();
+                      find('textarea').focus();
             else $(this).closest('tr').next(). // next
-                      find('input:text').focus();
+                      find('textarea').focus();
             return false;
         }
     }).focusin(function() {

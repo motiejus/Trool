@@ -26,8 +26,9 @@
       <td class="msgstr">
         <%= form_for :msg, :url => po_message_url(@po, msg),
                      :remote => true, :html => { :method => :put } do |f| %>
-             <%= f.text_field :msgstr, :id => "msgstr-text-#{msg.id}",
-                         :class => "msgstr_textfield", :value => msg.msgstr %>
+             <%= f.text_area :msgstr, :id => "msgstr-text-#{msg.id}",
+                             :class => "msgstr_text",
+                             :value => msg.msgstr, :rows => msg.msgid.count("\n") + 1 %>
         <% end %>
         </td>
         <td class="msgstuff">

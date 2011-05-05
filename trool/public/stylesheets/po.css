@@ -7,38 +7,41 @@ table#messages {
     width: 100%;
 }
   #messages td {
-      padding: 5px;
       border-top: 1px #CCC solid;
       border-bottom: 1px #CCC solid;
   }
   #messages .msgstr {
-      width: 360px;
-      max-width: 360px;
+      width: 400px;
+      max-width: 400px;
   }
   #messages .msgid {
-      width: 360px;
-      max-width: 360px;
-      /*word-wrap: break-word;*/
+      padding: 5px;
+      width: 400px;
+      max-width: 400px;
       white-space: pre-wrap;
+      vertical-align: top;
   }
   #messages .msgid span.spaced {
       background-color: #EEE;
   }
+  #messages .msgstuff {
+    padding: 5px;
+  }
   #messages .msgstuff label {
     font-size: 10px;
   }
-  #messages .msgstr input.msgstr_textfield {
-      padding: 5px;
+  #messages .msgstr .msgstr_text {
+      font-size: 13px;
+      padding: 4px;
       border: none;
       width: 100%;
   }
-    #messages .msgstr input.msgstr_textfield.current {
-      background: #FFA !important;
-    }
-    #messages .msgstr input.msgstr_textfield.focused {
-      background: #F4F4F4;
-    }
-
+  #messages .msgstr .msgstr_text.current {
+    background: #FFA !important;
+  }
+  #messages .msgstr .msgstr_text.focused {
+    background: #F4F4F4;
+  }
 
 #navigation_statuses {
   margin-bottom: 10px; 
