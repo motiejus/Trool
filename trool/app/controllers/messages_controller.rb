@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
 
     # Check for errors
     if @msg.valid?
-      render :json => "Saved.".to_json,
+      render :json => "Saved.".to_json
     else
       # Return error message
       render :json => @msg.errors.to_json,
