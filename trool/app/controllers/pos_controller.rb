@@ -53,7 +53,7 @@ class PosController < ApplicationController
 
     # Create po file
     @po = Po.new(params[:po])
-    if params[:data]
+    if params[:data] and not params[:data].empty?
       @po.populate_from_po(params[:data])
     else
       @po.populate_from_pot

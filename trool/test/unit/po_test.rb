@@ -12,6 +12,12 @@ class PoTest < ActiveSupport::TestCase
     @po.populate_from_pot
   end
 
+  test "create from pot" do
+    content = File.open(Rails.root.to_s+'/test/git.pot', 'r').read
+    @po.populate_from_po(content)
+    assert_raise(RuntimeError) { @po.populate_from_po('') }
+  end
+
   test "generate string" do
     assert_equal "#: wt-status.c:134", @po.messages.first.header_string
     assert_equal "msgid \"Unmerged paths:\"\nmsgstr \"\"",
