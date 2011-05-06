@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $('input, textarea', '#messages').change(function() { // Submit changes
         $(this).closest('form').submit();
-    }).filter('textarea').keypress(function(e) { // focus next/prev
+    }).filter('textarea').keydown(function(e) { // focus next/prev
         // on tab or enter, focus next entry
         if ((e.ctrlKey && e.keyCode == 13) || e.keyCode == 9) {
             if (e.shiftKey) // previous
