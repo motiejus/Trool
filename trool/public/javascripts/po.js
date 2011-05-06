@@ -22,18 +22,18 @@ $(document).ready(function() {
         function() { $(this).removeClass('focused'); }
     );
 
-    $('.msgstr-form').bind('ajax:error', function(evt, xhr, status, error) {
-        stat = $(this).parent().nextAll('.msgstatus');
+    $('form.msgstr-form').bind('ajax:error', function(evt, xhr, status, error) {
+        stat = $(this).parent().nextAll('td.msgstatus');
         try {
             errors = $.parseJSON(xhr.responseText);
-            stat.addClass('error');
+            stat.css('opacity', 1).css('background', '#D55');
             stat[0].title = errors['msgstr'][0];
         } catch(err) {
             errors = {'message': 'Server error'}
         }
     }).bind('ajax:success', function(evt, data, status, xhr) {
-        stat = $(this).parent().nextAll('.msgstatus');
-        stat.addClass('ok').fadeTo(600, 0);
+        stat = $(this).parent().nextAll('td.msgstatus');
+        stat.css('opacity', 1).css('background', '#5D5').fadeTo(600, 0);
         stat[0].title = $.parseJSON(xhr.responseText);
     });
 });

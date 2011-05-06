@@ -9,9 +9,11 @@
     <td><%= link_to raw('&#10005;'), pot, :confirm => 'Are you sure?',
             :class => 'plain', :method => :delete %></td>
     <td> | </td>
-    <% pot.pos.each do |po| %>
-        <td> <%= link_to po.lang, po %> </td>
-    <% end %>
+    <td>
+        <% pot.pos.each do |po| %>
+            <%= link_to po.lang, po %>
+        <% end %>
+    </td>
     <td> | </td>
     <td><%= link_to "Translate to your language!", new_po_path %></td>
   </tr>

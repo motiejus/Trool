@@ -33,12 +33,6 @@ table#messages {
   #messages .msgstatus {
     width: 7px;
   }
-  #messages .msgstatus.error {
-    background: #D55;
-  }
-  #messages .msgstatus.ok {
-    background: #5D5;
-  }
   #messages .msgstr textarea.msgstr_text {
       font-size: 13px;
       padding: 4px;
