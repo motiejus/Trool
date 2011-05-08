@@ -11,7 +11,6 @@ class PosController < ApplicationController
   end
 
   # GET /pos/1
-  # GET /pos/1.xml
   def show
     @po = Po.find(params[:id])
     show = request.GET.fetch('show', nil)
@@ -19,15 +18,27 @@ class PosController < ApplicationController
     when 'translated'
       @messages = @po.messages.where("msgstr != ''").where("fuzzy == ?", false)
     when 'untranslated'
-      @messages = @po.messages.where("msgstr == '' OR fuzzy == ? ", true)
+      @messages = @po.messages.where("msgstr == '' OR fuzzy == ?", true)
     else
       @messages = @po.messages
     end
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @po }
+    unless request.GET.fetch(:filter, '').blank?
+      @messages = @messages.where("msgid LIKE ? OR msgstr LIKE ?",
+                      "%#{request.GET[:filter]}%", "%#{request.GET[:filter]}%")
     end
+
+    if request.xhr?
+      render :partial => "messages", :messages => @messages
+    else
+      respond_to do |format|
+        format.html # show.html.erb
+      end
+    end
+  end
+
+  def messages
+    render :partial => ""
   end
 
   # GET /pos/new
@@ -100,6 +111,7 @@ class PosController < ApplicationController
   end
 
   # GET /pos/1/download
+  # TODO mo download
   def download
     @po = Po.find(params[:id])
     render :text => @po.output, :content_type => 'text/plain'

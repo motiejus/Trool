@@ -1,0 +1,22 @@
+<% @messages.each do |msg| %>
+<tr>
+  <td class="msgid"><%= msg.msgid.gsub(/( +)/, '<span>\1</span>').html_safe %></td>
+  <td class="msgstr">
+    <%= form_for :msg, :url => po_message_url(@po, msg), :remote => true,
+        :html => { :method => :put, :class => 'msgstr-form',
+                   :autocomplete => :off } do |f| %>
+         <%= f.text_area :msgstr, :id => "msgstr-text-#{msg.id}",
+                         :class => "msgstr_text",
+                         :value => msg.msgstr, :rows => msg.msgid.count("\n") + 1 %>
+    <% end %>
+    </td>
+    <td class="msgstatus"></td>
+    <td class="msgstuff">
+    <%= form_for :msg, :url => po_message_url(@po, msg),
+                 :remote => true, :html => { :method => :put } do |f| %>
+       <%= f.check_box :fuzzy, :name => "fuzzy-#{msg.id}", :checked => msg.fuzzy %>
+       <%= f.label :fuzzy %>
+     <% end %>
+  </td>
+</tr>
+<% end %>

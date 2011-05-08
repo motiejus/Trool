@@ -59,3 +59,10 @@ table#messages {
     padding-left: 0;
     margin: 0;
   }
+  #navigation_statuses .filter {
+    padding-left: 2px;
+    border: solid #AAA 1px;
+  }
+  #navigation_statuses .filter.empty {
+    color: #AAA;
+  }
