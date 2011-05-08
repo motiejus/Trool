@@ -11,13 +11,13 @@ table#messages {
       border-bottom: 1px #CCC solid;
   }
   #messages .msgstr {
-      width: 400px;
-      max-width: 400px;
+      width: 430px;
+      max-width: 430px;
   }
   #messages .msgid {
       padding: 5px;
-      width: 400px;
-      max-width: 400px;
+      width: 430px;
+      max-width: 430px;
       white-space: pre-wrap;
       vertical-align: top;
   }
@@ -37,9 +37,9 @@ table#messages {
       font-size: 13px;
       padding: 4px;
       border: none;
-      width: 392px;
-      max-width: 392px;
-      min-width: 392px;
+      width: 421px;
+      max-width: 421;
+      min-width: 421px;
       min-height: 20px;
   }
   #messages .msgstr .msgstr_text.current {
