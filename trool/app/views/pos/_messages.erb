@@ -1,6 +1,6 @@
 <% @messages.each do |msg| %>
 <tr>
-  <td class="msgid"><%= msg.msgid.gsub(/( +)/, '<span>\1</span>').html_safe %></td>
+  <td class="msgid"><%= h(msg.msgid).gsub(/( +)/, '<span>\1</span>').html_safe %></td>
   <td class="msgstr">
     <%= form_for :msg, :url => po_message_url(@po, msg), :remote => true,
         :html => { :method => :put, :class => 'msgstr-form',
